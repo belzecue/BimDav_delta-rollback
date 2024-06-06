@@ -27,6 +27,8 @@ func _ready() -> void:
 	SyncManager.sync_error.connect(self._on_SyncManager_sync_error)
 
 	$ServerPlayer.set_multiplayer_authority(1)
+	$ServerPlayer.spawn_parent = $SpawnParent
+	$ClientPlayer.spawn_parent = $SpawnParent
 
 	var cmdline_args = OS.get_cmdline_args()
 	if "server" in cmdline_args:

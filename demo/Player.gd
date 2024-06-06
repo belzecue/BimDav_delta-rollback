@@ -5,6 +5,7 @@ const Bomb = preload("res://demo/Bomb.tscn")
 var input_prefix := "player1_"
 
 var speed := 0.0
+var spawn_parent: Node2D
 
 func _get_local_input() -> Dictionary:
 	var input_vector = Input.get_vector(input_prefix + "left", input_prefix + "right", input_prefix + "up", input_prefix + "down")
@@ -32,7 +33,7 @@ func _network_process(input: Dictionary) -> void:
 		speed = 0.0
 	
 	if input.get("drop_bomb", false):
-		SyncManager.spawn("Bomb", get_parent(), Bomb, { position = global_position })
+		SyncManager.spawn("Bomb", spawn_parent, Bomb, { position = global_position })
 
 func _save_state() -> Dictionary:
 	return {

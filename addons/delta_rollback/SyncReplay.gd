@@ -16,7 +16,6 @@ var match_scene_method: String = 'setup_match_for_replay'
 var _setting_up_match := false
 
 func _ready() -> void:
-	print("coucou")
 	if "replay" in OS.get_cmdline_args():
 		if not ProjectSettings.has_setting(MATCH_SCENE_PATH_SETTING):
 			_show_error_and_quit("Match scene not configured for replay")
